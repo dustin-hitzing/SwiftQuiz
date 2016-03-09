@@ -23,12 +23,23 @@ class ViewController: UIViewController {
     
     
     @IBAction func showNextQuestion(sender: AnyObject){
-        
+        ++currentQuestionIndex
+        if currentQuestionIndex == questions.count {
+            currentQuestionIndex = 0
+        }
+        let question: String = questions[currentQuestionIndex]
+        questionLabel.text = question
+        answerLabel.text = "???"
     }
     
     @IBAction func showAnswer(sender: AnyObject){
-        
+        let answer: String = answers[currentQuestionIndex]
+        answerLabel.text = answer
     }
     
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        questionLabel.text = questions[currentQuestionIndex]
+    }
 }
 
